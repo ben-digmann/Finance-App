@@ -2,6 +2,8 @@
 
 This document outlines the security measures implemented in the Finance App to protect user data and ensure secure operations.
 
+SOME OF THE BELOW ARE NOT YET IMPLEMENTED!!! THIS IS NOT A PROD-READY APPLICATION YET!!
+
 ## Data Protection
 
 ### Data at Rest
