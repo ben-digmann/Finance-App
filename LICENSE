@@ -1,0 +1,30 @@
+# Personal Use License
+
+Copyright (c) 2025 Benjamin Digmann
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use the Software for personal, non-commercial purposes only, subject to the following conditions:
+
+1. The Software may be used for personal, educational, and non-commercial purposes only.
+
+2. The Software may not be used, in whole or in part, for any commercial purpose without explicit written permission from the copyright holder. Commercial purposes include, but are not limited to:
+   - Using the Software to provide services to others for a fee
+   - Incorporating the Software into a commercial product
+   - Using the Software to generate revenue directly or indirectly
+
+3. Redistributions of the Software must retain this license notice, this list of conditions, and the following disclaimer.
+
+4. The copyright holder reserves the right to change the terms of this license at any time.
+
+5. Modified versions of the Software must be clearly marked as such and must not be misrepresented as the original Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Third-Party Code
+
+This project includes third-party libraries that are subject to their own licenses:
+
+1. React and related packages are licensed under the MIT License.
+2. Express.js and related packages are licensed under the MIT License.
+3. Plaid Link components are licensed under their respective terms by Plaid Inc.
+
+Users must ensure compliance with all third-party licenses when using this software.
