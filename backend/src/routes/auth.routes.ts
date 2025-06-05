@@ -1,6 +1,11 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import { body } from 'express-validator';
 import { authenticate } from '../middleware/auth.middleware';
+import {
+  register as registerController,
+  login as loginController,
+  getCurrentUser,
+} from '../controllers/auth.controller';
 
 const router = express.Router();
 
@@ -26,52 +31,31 @@ const validateLogin = [
   body('password').notEmpty().withMessage('Password is required'),
 ];
 
-// Placeholder route for registration
-router.post('/register', validateRegister, (req: Request, res: Response) => {
-  const { email, firstName, lastName } = req.body;
-  
-  res.status(201).json({
-    user: {
-      id: 1,
-      email,
-      firstName,
-      lastName,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
-    token: 'placeholder-jwt-token',
-  });
-});
+// Register a new user
+router.post(
+  '/register',
+  validateRegister,
+  (req: Request, res: Response, next: NextFunction) => {
+    return registerController(req, res, next);
+  }
+);
 
-// Placeholder route for login
-router.post('/login', validateLogin, (req: Request, res: Response) => {
-  const { email } = req.body;
-  
-  res.status(200).json({
-    user: {
-      id: 1,
-      email,
-      firstName: 'Demo',
-      lastName: 'User',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
-    token: 'placeholder-jwt-token',
-  });
-});
+// Log in a user
+router.post(
+  '/login',
+  validateLogin,
+  (req: Request, res: Response, next: NextFunction) => {
+    return loginController(req, res, next);
+  }
+);
 
-// Placeholder route for getting current user
-router.get('/me', authenticate, (req: Request, res: Response) => {
-  res.status(200).json({
-    user: {
-      id: 1,
-      email: 'user@example.com',
-      firstName: 'Demo',
-      lastName: 'User',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
-  });
-});
+// Get the currently authenticated user
+router.get(
+  '/me',
+  authenticate,
+  (req: Request, res: Response, next: NextFunction) => {
+    return getCurrentUser(req, res, next);
+  }
+);
 
 export default router;
