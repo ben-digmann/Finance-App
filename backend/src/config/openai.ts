@@ -1,7 +1,15 @@
 import dotenv from 'dotenv';
 import { logger } from '../utils/logger';
 
+// Load environment before using variables
 dotenv.config();
+
+// Custom LLM configuration
+const LLM_API_URL =
+  process.env.LLM_API_URL ||
+  'https://s5rs0cklk8.execute-api.us-east-1.amazonaws.com/Prod/v1/chat/completions';
+const LLM_API_TOKEN = process.env.LLM_API_TOKEN;
+
 
 // Simple local transaction classifier (no external API needed)
 export async function classifyTransaction(transaction: {
@@ -94,13 +102,28 @@ export async function classifyTransaction(transaction: {
   }
 }
 
-// Mock OpenAI client to satisfy imports
-const openai = {
-  createCompletion: async () => ({ 
-    data: { 
-      choices: [{ text: 'Other' }] 
-    } 
-  })
-};
+export async function askQuestion(prompt: string): Promise<string> {
+  try {
+    const response = await fetch(LLM_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(LLM_API_TOKEN ? { Authorization: `Bearer ${LLM_API_TOKEN}` } : {}),
+      },
+      body: JSON.stringify({
+        messages: [{ role: 'user', content: prompt }],
+      }),
+    });
 
-export { openai };
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    const answer = data.choices?.[0]?.message?.content?.trim() || '';
+    return answer;
+  } catch (error) {
+    logger.error('Error calling LLM:', error);
+    return 'Unable to generate response';
+  }
+}

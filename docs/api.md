@@ -728,6 +728,46 @@ DELETE /budgets/:id
 }
 ```
 
+### Financial summary
+
+```
+GET /summary
+```
+
+**Response:**
+```json
+{
+  "accounts": 1234.56,
+  "assets": 2500.00,
+  "netWorth": 3734.56,
+  "budgets": [/* active budgets */],
+  "spendingByCategory": {
+    "Food": 200.12,
+    "Transportation": 75.00
+  }
+}
+```
+
+### AI chat
+
+```
+POST /chat
+```
+
+**Request Body:**
+```json
+{
+  "question": "How much did I spend on groceries this month?"
+}
+```
+
+**Response:**
+```json
+{
+  "answer": "You spent $200.12 on groceries this month."
+}
+```
+
 ## Error Responses
 
 ### Standard Error Format

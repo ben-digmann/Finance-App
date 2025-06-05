@@ -235,7 +235,7 @@ export const getMonthlyStats = async (req: Request, res: Response, next: NextFun
             WHEN "llmCategory" IS NOT NULL THEN "llmCategory"
             ELSE "category"
           END
-        `),
+        `) as any,
       ],
       order: [[Sequelize.fn('SUM', Sequelize.col('amount')), 'DESC']],
       limit: 5,
@@ -324,7 +324,7 @@ export const getSpendingByCategory = async (req: Request, res: Response, next: N
             WHEN "llmCategory" IS NOT NULL THEN "llmCategory"
             ELSE "category"
           END
-        `),
+        `) as any,
       ],
       order: [[Sequelize.fn('SUM', Sequelize.col('amount')), 'DESC']],
     });
