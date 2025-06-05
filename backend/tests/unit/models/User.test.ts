@@ -39,28 +39,18 @@ describe('User Model', () => {
   });
 
   it('should validate email format', async () => {
-    // Attempt to create a user with invalid email
-    try {
-      await User.create({
+    // Attempt to create a user with invalid email and ensure it throws an error
+    await expect(
+      User.create({
         ...userData,
         email: 'invalid-email',
-      });
-      // If we reach this point, the validation didn't throw an error
-      fail('Email validation failed to detect invalid email');
-    } catch (error) {
-      expect(error).toBeDefined();
-    }
+      })
+    ).rejects.toThrow();
   });
 
   it('should enforce unique email constraint', async () => {
-    // Attempt to create a second user with the same email
-    try {
-      await User.create(userData);
-      // If we reach this point, the uniqueness constraint didn't work
-      fail('Uniqueness constraint failed for email');
-    } catch (error) {
-      expect(error).toBeDefined();
-    }
+    // Attempt to create a second user with the same email and expect an error
+    await expect(User.create(userData)).rejects.toThrow();
   });
 
   it('should compare passwords correctly', async () => {
