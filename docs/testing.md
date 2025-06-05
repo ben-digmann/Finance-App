@@ -23,12 +23,12 @@ Our development follows a strict TDD approach with these core principles:
 
 **Examples**:
 - Testing a utility function that formats currency
-- Testing a React component renders correctly with given props
+- Testing a Svelte component renders correctly with given props
 - Testing a model validation method works correctly
 
 **Tools**:
 - Backend: Jest + Supertest
-- Frontend: Jest + React Testing Library
+- Frontend: Jest + -library/svelte
 
 **Location**:
 - Backend: `backend/tests/unit/`
@@ -74,7 +74,7 @@ test('renders transaction amount with correct formatting', () => {
 
 **Tools**:
 - Backend: Jest + Supertest
-- Frontend: Jest + React Testing Library + Mock Service Worker
+- Frontend: Jest + -library/svelte + Mock Service Worker
 
 **Location**:
 - Backend: `backend/tests/integration/`

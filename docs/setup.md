@@ -6,7 +6,7 @@ This guide will help you set up the Finance App development environment on your 
 
 Before you begin, make sure you have the following installed:
 
-- **Node.js** (v18 or higher)
+- **Go** (1.20 or higher)
 - **npm** (v7 or higher)
 - **Docker** and **Docker Compose**
 - **Git**

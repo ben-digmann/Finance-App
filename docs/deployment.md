@@ -7,7 +7,7 @@ This document outlines the deployment process for the Finance App, covering both
 ### Prerequisites
 
 - Docker and Docker Compose
-- Node.js v18+
+- Go 1.20+
 - Plaid developer account (free Sandbox tier is sufficient)
 - OpenAI API key (optional for LLM-based categorization)
 
@@ -236,7 +236,7 @@ Start with these simple monitoring techniques for your v0 app:
 
 3. **Error Tracking**
    - Consider adding Sentry (free tier) for error tracking
-   - Implement proper error boundaries in React
+   - Implement proper error boundaries in  Svelte
 
 ## Next Steps After v0
 

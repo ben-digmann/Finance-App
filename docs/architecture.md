@@ -6,8 +6,8 @@ This document outlines the architecture of the Finance App, a full-stack applica
 
 The Finance App is a modern web application that follows a client-server architecture with the following main components:
 
-1. **Frontend**: React single-page application (SPA) with TypeScript
-2. **Backend API**: Node.js Express server with TypeScript
+1. **Frontend**: Svelte single-page application (SPA)
+2. **Backend API**: Go net/http server
 3. **Database**: PostgreSQL relational database
 4. **External APIs**: Plaid API for financial data, OpenAI API for transaction categorization
 
@@ -41,12 +41,12 @@ The Finance App is a modern web application that follows a client-server archite
 ### Frontend
 
 - **Technology Stack**:
-  - React (v18)
-  - TypeScript
-  - React Router for navigation
+  - Svelte
+  - Svelte stores for state
+  - svelte-routing for navigation
   - Axios for API calls
   - Chart.js for data visualization
-  - React Plaid Link for Plaid integration
+  - Plaid Link integration
 
 - **Key Features**:
   - Responsive dashboard with financial overview
@@ -62,8 +62,8 @@ The Finance App is a modern web application that follows a client-server archite
   ├── public/            # Static assets
   ├── src/
   │   ├── components/    # Reusable UI components
-  │   ├── context/       # React context providers
-  │   ├── hooks/         # Custom React hooks
+  │   ├── context/       # Svelte stores
+  │   ├── hooks/         # Svelte components
   │   ├── pages/         # Page components
   │   ├── services/      # API service modules
   │   └── utils/         # Utility functions
@@ -72,10 +72,9 @@ The Finance App is a modern web application that follows a client-server archite
 ### Backend
 
 - **Technology Stack**:
-  - Node.js
-  - Express.js
-  - TypeScript
-  - Sequelize ORM
+  - Go net/http
+  - database/sql
+  - Optional ORM
   - JSON Web Tokens (JWT) for authentication
 
 - **Key Features**:
@@ -88,19 +87,10 @@ The Finance App is a modern web application that follows a client-server archite
 
 - **Directory Structure**:
   ```
-  backend/
-  ├── src/
-  │   ├── config/        # Configuration files
-  │   ├── controllers/   # Request handlers
-  │   ├── middleware/    # Express middleware
-  │   ├── models/        # Sequelize data models
-  │   ├── routes/        # API route definitions
-  │   ├── services/      # Business logic services
-  │   └── utils/         # Utility functions
-  └── tests/             # Test directory (following TDD)
-      ├── unit/
-      ├── integration/
-      └── e2e/
+  backend-go/
+  ├── main.go          # Entry point
+  ├── handlers.go      # HTTP handlers
+  └── database.go      # Database connection
   ```
 
 ### Database

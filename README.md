@@ -18,17 +18,16 @@ A secure full-stack application that connects to financial accounts via Plaid, c
 ## Technology Stack
 
 ### Frontend
-- React with TypeScript
-- React Router for navigation
-- Context API for state management
-- Chart.js for data visualization
-- React Plaid Link for Plaid integration
+- Svelte with minimal runtime
+- Router solutions like svelte-routing
+- State handled with built-in stores
+- Chart.js for visualization
+- Plaid Link integration
 - Responsive CSS design
 
 ### Backend
-- Node.js with Express
-- TypeScript for type safety
-- PostgreSQL with Sequelize ORM
+- Go net/http server
+- PostgreSQL access via database/sql
 - JWT-based authentication
 - Plaid API integration
 - OpenAI API for transaction categorization
@@ -46,7 +45,7 @@ The project follows a modern, modular architecture:
 
 ```
 finance-app/
-├── frontend/            # React frontend application
+├── frontend/            # Svelte frontend application
 │   ├── src/             # Source code
 │   │   ├── components/  # Reusable UI components
 │   │   ├── context/     # React context providers
@@ -56,20 +55,10 @@ finance-app/
 │   │   └── utils/       # Utility functions
 │   └── public/          # Static assets
 │
-├── backend/             # Node.js backend application
-│   ├── src/             # Source code
-│   │   ├── config/      # Configuration files
-│   │   ├── controllers/ # Request handlers
-│   │   ├── middleware/  # Express middleware
-│   │   ├── models/      # Sequelize data models
-│   │   ├── routes/      # API route definitions
-│   │   ├── services/    # Business logic services
-│   │   └── utils/       # Utility functions
-│   └── tests/           # Test files (following TDD)
-│       ├── unit/
-│       ├── integration/
-│       └── e2e/
-│
+├── backend-go/         # Go backend application
+│   ├── main.go          # Entry point
+│   ├── handlers.go      # HTTP handlers
+│   └── database.go      # Database connection
 ├── docs/                # Documentation
 │   ├── api.md           # API documentation
 │   ├── architecture.md  # Architecture overview
@@ -90,7 +79,7 @@ finance-app/
 
 ### Prerequisites
 
-- Node.js (v18+)
+- Go (1.20+)
 - Docker and Docker Compose
 - Plaid Developer Account (free Sandbox tier is sufficient to start)
 - OpenAI API Key (optional for transaction categorization)
@@ -155,10 +144,10 @@ For more detailed setup instructions, see the [Setup Guide](./docs/setup.md).
    ```
 3. In separate terminals start the backend and frontend:
    ```bash
-   cd backend && npm run dev
+   cd backend-go && go run .
    ```
    ```bash
-   cd frontend && npm start
+   cd frontend-svelte && npm run dev
    ```
 
 ## Testing
@@ -167,16 +156,16 @@ This project follows Test-Driven Development (TDD) principles with comprehensive
 
 ```bash
 # Run backend tests
-cd backend
-npm test
+cd backend-go
+ go test ./...
 
 # Run frontend tests
-cd frontend
-npm test
+cd frontend-svelte
+ npm test
 
 # Run end-to-end tests
-cd frontend
-npm run test:e2e
+cd frontend-svelte
+ npm run test:e2e
 ```
 
 For more details on our testing approach, see the [Testing Strategy](./docs/testing.md).
