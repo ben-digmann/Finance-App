@@ -10,8 +10,10 @@ A secure full-stack application that connects to financial accounts via Plaid, c
 - **Transaction Categorization**: Basic categorization with optional AI-assisted labeling
 - **Account Dashboard**: View all accounts and balances in one place
 - **Transaction Management**: View, search, and sort your transactions
+- **Financial Summary**: See budgets, assets, and net worth at a glance
 - **Secure API**: Well-designed backend with proper security controls
 - **Dockerized Environment**: Easy local development and deployment
+- **AI Chat**: Ask natural language questions about your finances
 
 ## Technology Stack
 
@@ -30,6 +32,7 @@ A secure full-stack application that connects to financial accounts via Plaid, c
 - JWT-based authentication
 - Plaid API integration
 - OpenAI API for transaction categorization
+- Optional LLM service for AI-powered chat
 
 ### Infrastructure
 - Docker containers for consistent development and deployment
@@ -90,7 +93,11 @@ finance-app/
 - Node.js (v18+)
 - Docker and Docker Compose
 - Plaid Developer Account (free Sandbox tier is sufficient to start)
-- OpenAI API Key (optional for LLM transaction categorization)
+- OpenAI API Key (optional for transaction categorization)
+- LLM_API_URL and LLM_API_TOKEN if using the built-in chat feature
+
+Set `LLM_API_URL` to the endpoint of your language model service and
+`LLM_API_TOKEN` to the associated bearer token.
 
 ### Setting Up Plaid API Access (Required)
 

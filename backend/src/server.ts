@@ -18,6 +18,8 @@ import categoryRoutes from './routes/category.routes';
 import assetRoutes from './routes/asset.routes';
 import budgetRoutes from './routes/budget.routes';
 import plaidRoutes from './routes/plaid.routes';
+import summaryRoutes from './routes/summary.routes';
+import chatRoutes from './routes/chat.routes';
 
 // Create Express server
 const app = express();
@@ -50,6 +52,8 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/assets', assetRoutes);
 app.use('/api/budgets', budgetRoutes);
 app.use('/api/plaid', plaidRoutes);
+app.use('/api/summary', summaryRoutes);
+app.use('/api/chat', chatRoutes);
 
 // Health check
 app.get('/health', (req: Request, res: Response) => {
