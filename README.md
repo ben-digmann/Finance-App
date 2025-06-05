@@ -143,6 +143,24 @@ docker-compose up
 
 For more detailed setup instructions, see the [Setup Guide](./docs/setup.md).
 
+### Running in a Codex Container
+
+1. Copy `.env.codex` to `.env`:
+   ```bash
+   cp .env.codex .env
+   ```
+2. Run the helper script to install dependencies and start Postgres:
+   ```bash
+   ./codex_setup.sh
+   ```
+3. In separate terminals start the backend and frontend:
+   ```bash
+   cd backend && npm run dev
+   ```
+   ```bash
+   cd frontend && npm start
+   ```
+
 ## Testing
 
 This project follows Test-Driven Development (TDD) principles with comprehensive test coverage.
