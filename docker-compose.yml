@@ -7,42 +7,36 @@ services:
     volumes:
       - ./:/app
     environment:
-      - NODE_ENV=development
-      - REACT_APP_API_URL=http://localhost:8000/api
+      - VITE_API_URL=http://localhost:8000/api
     command: >
-      sh -c "cd frontend && npm install &&
-             npm start"
+      sh -c "cd frontend-svelte && npm install &&
+             npm run dev"
     depends_on:
       - api
     restart: unless-stopped
 
   api:
-    image: node:18-alpine
+    image: golang:1.20-alpine
     working_dir: /app
     ports:
       - "8000:8000"
     volumes:
       - ./:/app
     environment:
-      - NODE_ENV=development
       - PORT=8000
-      - API_BASE_URL=http://localhost:8000
-      - FRONTEND_URL=http://localhost:3000
       - DB_HOST=db
       - DB_PORT=5432
       - DB_NAME=finance_app
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - JWT_SECRET=dev_jwt_secret_replace_in_production
-      - JWT_EXPIRES_IN=7d
       - PLAID_CLIENT_ID=${PLAID_CLIENT_ID}
       - PLAID_SECRET=${PLAID_SECRET}
       - PLAID_ENV=sandbox
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - LOG_LEVEL=debug
     command: >
-      sh -c "cd backend && npm install &&
-             npm run dev:watch"
+      sh -c "cd backend-go && go run ."
     depends_on:
       db:
         condition: service_healthy

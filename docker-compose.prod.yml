@@ -3,7 +3,7 @@ version: '3.8'
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./frontend-svelte
       dockerfile: Dockerfile
     ports:
       - "80:80"
@@ -15,12 +15,11 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./backend-go
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     environment:
-      - NODE_ENV=production
       - PORT=8000
       - DATABASE_URL=postgres://postgres:${DB_PASSWORD}@db:5432/financeapp
       - JWT_SECRET=${JWT_SECRET}
